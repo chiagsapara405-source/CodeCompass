@@ -13,7 +13,10 @@
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   }
 
-  /* Custom scrollbar */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-teal-500/50 ring-offset-2 ring-offset-zinc-950 rounded-lg;
+  }
+
   ::-webkit-scrollbar {
     width: 6px;
     height: 6px;
@@ -55,4 +58,40 @@
   .scrollbar-none::-webkit-scrollbar {
     display: none;
   }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-out both;
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.6s ease-out both;
+}
+
+.animate-fadeIn[style*="--i"] {
+  animation-delay: calc(0.08s * var(--i));
+}
+
+.animate-fadeInUp[style*="--i"] {
+  animation-delay: calc(0.1s * var(--i));
 }
